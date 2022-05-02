@@ -12,7 +12,8 @@ const getLocalStorage = () => {
     }
 }
 
-const defaultDate = new Date().toLocaleDateString('vn-VN').slice(0, 10)
+//default date
+const defaultDate = new Date().toISOString().slice(0, 10)
 
 const initialState = {
     title: "",
@@ -69,20 +70,29 @@ function App() {
         localStorage.setItem('list', JSON.stringify(list))
     }, [list])
 
+      //Disable past date
+    const disablePastDate = () => {
 
+        const today = new Date()
+        const dd = String("0" + (today.getDate()+ 1)).slice(-2)
+        const mm = String("0" + (today.getMonth() + 1)).slice(-2)
+        const yyyy = today.getFullYear()
+        return yyyy + "-" + mm + "-" + dd;
+
+    }
 
     return (
         <>
             <div className='container'>
                 <main className='section-center'>
-                    <Add handleChange={handleChange} handleSubmit={handleSubmit} task={task}/>
+                    <Add handleChange={handleChange} handleSubmit={handleSubmit} task={task} disablePastDate={disablePastDate}/>
                     <List task={task}
                           list={list}
-                          setTask={setTask}
                           setList={setList}
                           isEditing={isEditing}
                           handleEdit={handleEdit}
                           removeTask={removeTask}
+                          disablePastDate={disablePastDate}
                          />
                 </main>
             </div>

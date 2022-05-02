@@ -2,16 +2,9 @@ import React from 'react';
 
 
 
-const Add = ({handleChange, handleSubmit, task}) => {
+const Add = ({handleChange, handleSubmit, task, disablePastDate}) => {
 
-    const disableDate = () => {
-        let today, dd, mm, yyyy;
-        today = new Date()
-        dd = today.getDate() + 1;
-        mm = today.getMonth() + 1;
-        yyyy = today.getFullYear();
-        return mm+"/"+dd+"/"+yyyy;
-    }
+
 
     return (
         <>
@@ -29,7 +22,7 @@ const Add = ({handleChange, handleSubmit, task}) => {
                     <div className='options'>
                         <div className='date'>
                             <label>Due Date</label>
-                            <input type="date" name="date" min={disableDate()} defaultValue={task.date} value={task.date} onChange={handleChange} className='input input-date'/>
+                            <input type="date" name="date" min={disablePastDate()} defaultValue="2022-03-05" value={task.date} onChange={handleChange} className='input input-date'/>
                         </div>
                         <div className='priority'>
                             <label>Priority</label>

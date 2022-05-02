@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 
-const List = ({list, setList, setTask, handleEdit, isEditing, removeTask}) => {
+const List = ({list, setList, handleEdit, isEditing, removeTask, disablePastDate}) => {
     const [search, setSearch] = useState("")
     const [checked, setChecked] = useState(false)
     const [itemFilter, setItemFilter] = useState([])
@@ -97,7 +97,7 @@ const List = ({list, setList, setTask, handleEdit, isEditing, removeTask}) => {
                                                 <div className='options'>
                                                     <div className='date'>
                                                         <label>Due Date</label>
-                                                        <input type="date" name="date" value={newTask.date} placeholder={date} onChange={changeUpdate} className='input input-date'/>
+                                                        <input type="date" name="date" min={disablePastDate()} value={newTask.date} placeholder={date} onChange={changeUpdate} className='input input-date'/>
                                                     </div>
                                                     <div className='priority'>
                                                         <label>Priority</label>
@@ -141,7 +141,7 @@ const List = ({list, setList, setTask, handleEdit, isEditing, removeTask}) => {
                                             <div className='options'>
                                                 <div className='date'>
                                                     <label>Due Date</label>
-                                                    <input type="date" name="date" value={newTask.date} placeholder={date} onChange={changeUpdate} className='input input-date'/>
+                                                    <input type="date" name="date" min={disablePastDate()} value={newTask.date} placeholder={date} onChange={changeUpdate} className='input input-date'/>
                                                 </div>
                                                 <div className='priority'>
                                                     <label>Priority</label>
