@@ -8,11 +8,7 @@ const List = ({list, setList, setTask, handleEdit, isEditing, removeTask}) => {
     const [newTask, setNewTask] = useState({title: "", description: "", date: new Date(), priority: "Normal"})
 
 
-    const handleRemove = () => {
-        setList([])
-        handleCheck()
-    }
-
+    // Handle search task
     const handleSearch = (e) => {
         const value = e.target.value;
         setSearch(value)
@@ -31,6 +27,7 @@ const List = ({list, setList, setTask, handleEdit, isEditing, removeTask}) => {
         setChecked(!checked)
     }
 
+    //Update task
     const changeUpdate = (e) => {
         const value = e.target.value;
         const name = e.target.name;
@@ -49,6 +46,7 @@ const List = ({list, setList, setTask, handleEdit, isEditing, removeTask}) => {
         setNewTask({title: "", description: "", date: "", priority: "Normal", isComplete: false})
     }
 
+    // Handle bulk action
     const completeTodo = index => {
         const newTodos = [...list];
         newTodos[index].isCompleted = true;
@@ -56,6 +54,10 @@ const List = ({list, setList, setTask, handleEdit, isEditing, removeTask}) => {
         setChecked(false)
 
   };
+        const handleRemove = () => {
+        setList([])
+        handleCheck()
+    }
 
 
 

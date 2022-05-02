@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import List from './Components/List';
 import Add from './Components/Add'
+
+
 const getLocalStorage = () => {
     let list = localStorage.getItem('list');
     if(list){
@@ -10,9 +12,7 @@ const getLocalStorage = () => {
     }
 }
 
-const date = new Date()
-
-const defaultDate = date.toLocaleDateString('vn-VN').slice(0, 10)
+const defaultDate = new Date().toLocaleDateString('vn-VN').slice(0, 10)
 
 const initialState = {
     title: "",
@@ -25,11 +25,12 @@ const initialState = {
 
 
 function App() {
+
     const [list, setList] = useState(getLocalStorage());
     const [isEditing, setIsEditing] = useState(false);
-
     const [task, setTask] = useState(initialState);
 
+    /* Handle form add new task */
     const handleChange = (e) => {
         e.preventDefault()
         const value = e.target.value;
@@ -50,6 +51,7 @@ function App() {
         }
     }
 
+    //Handle form edit
     const handleEdit = (index) => {
         if(isEditing === index) {
             return setIsEditing(null)
