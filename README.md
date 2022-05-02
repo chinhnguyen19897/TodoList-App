@@ -1,4 +1,4 @@
-## Available Scripts
+## Readme
 
 In the project directory, you can run:
 
