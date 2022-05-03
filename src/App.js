@@ -79,7 +79,7 @@ function App () {
                          handleSubmit={handleTaskAdded}
                          task={task}
                          disablePastDate={disablePastDate}
-                    initialState={initialState}/>
+                    />
                     <TodoList task={task}
                           list={list}
                           setList={setList}

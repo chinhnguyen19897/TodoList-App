@@ -136,8 +136,6 @@ const TodoList = ({ list, setList, isEditing, removeTask, disablePastDate, alert
                       ))
                     )
             }
-                    )
-
                  </div>
             </section>
         </>

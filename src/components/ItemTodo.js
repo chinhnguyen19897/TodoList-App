@@ -23,18 +23,22 @@ const ItemTodo = ({ data, index, checked, handleCheck, handleEdit, removeTask, c
                                   ? (<div className='form-update'>
                                             <form onSubmit={e => e.preventDefault()}>
 
+                                                {/* eslint-disable-next-line react/prop-types */}
                                                             <input type="text" value={newTask.title} name="title" onChange={changeUpdate} className='input'/>
                                                         <div className='description'>
                                                             <span>Description</span>
+                                                            {/* eslint-disable-next-line react/prop-types */}
                                                             <textarea name="description" value={newTask.description} onChange={changeUpdate} />
                                                         </div>
                                                         <div className='options'>
                                                             <div className='date'>
                                                                 <label>Due Date</label>
+                                                                {/* eslint-disable-next-line react/prop-types */}
                                                                 <input type="date" name="date" min={disablePastDate()} value={newTask.date} onChange={changeUpdate} className='input input-date'/>
                                                             </div>
                                                             <div className='priority'>
                                                                 <label>Priority</label>
+                                                                {/* eslint-disable-next-line react/prop-types */}
                                                                 <select name='priority' className='input input-date' onChange={changeUpdate} value={newTask.priority}>
                                                                     <option value="Low">Low</option>
                                                                     <option value='Normal'>Normal</option>
