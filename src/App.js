@@ -30,7 +30,7 @@ function App() {
     const [list, setList] = useState(getLocalStorage());
     const [isEditing, setIsEditing] = useState(false);
     const [task, setTask] = useState(initialState);
-
+    const [alert, setAlert] = useState({show: false, type: "", msg: ""})
     /* Handle form add new task */
     const handleChange = (e) => {
         e.preventDefault()
@@ -42,13 +42,13 @@ function App() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if(!task.title){
-            alert("please enter title")
+            showAlert(false, "danger", "please enter value")
         } else
         {
             const newItem = {id: new Date().getTime().toString(), ...task}
             setList([...list, newItem])
             setTask({title: "", description: "", date: "", priority: "Normal"})
-            alert("success")
+            showAlert(true, "success", 'item added to the list')
         }
     }
 
@@ -62,6 +62,7 @@ function App() {
     }
 
     const removeTask = (id) => {
+        showAlert(true, "danger", "item removed")
         setList(list.filter((item) => item.id !== id))
     }
 
@@ -69,6 +70,12 @@ function App() {
     useEffect(() => {
         localStorage.setItem('list', JSON.stringify(list))
     }, [list])
+
+
+    const showAlert = (show= false, type='', msg = '') => {
+            setAlert({show, type, msg})
+    }
+
 
       //Disable past date
     const disablePastDate = () => {
@@ -85,7 +92,10 @@ function App() {
         <>
             <div className='container'>
                 <main className='section-center'>
-                    <Add handleChange={handleChange} handleSubmit={handleSubmit} task={task} disablePastDate={disablePastDate}/>
+                    <Add handleChange={handleChange}
+                         handleSubmit={handleSubmit}
+                         task={task}
+                         disablePastDate={disablePastDate}/>
                     <List task={task}
                           list={list}
                           setList={setList}
@@ -93,6 +103,10 @@ function App() {
                           handleEdit={handleEdit}
                           removeTask={removeTask}
                           disablePastDate={disablePastDate}
+                          alert={alert}
+                          showAlert={showAlert}
+                          setIsEditing={setIsEditing}
+                          defaultDate={defaultDate}
                          />
                 </main>
             </div>

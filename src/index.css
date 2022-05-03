@@ -201,6 +201,29 @@ main {
   place-items: center;
 }
 
+/* Alert */
+
+.alert {
+  margin-bottom: 1rem;
+  height: 2.25rem;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  font-size: inherit;
+  line-height: 0.2rem;
+  border-radius: 0.25rem;
+  text-transform: capitalize;
+}
+.alert-danger {
+  color: var(--btn-primary-3);
+  background: #f8d7da;
+}
+.alert-success {
+  color: var(--btn-primary-1);
+  background: #d4edda;
+}
+
+
 
 /* Add section */
 
