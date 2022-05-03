@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState} from "react";
 import Alert from "./Alert";
 
 
@@ -103,16 +103,16 @@ const List = ({list, setList, isEditing, removeTask, disablePastDate, alert, sho
             {
                 search.length > 1 ? (
                     itemFilter.map((item, index) => {
-                        const {id, title, description, priority, date} = item
+                        const {id, title, isCompleted} = item
                         return (
                             <>
-                                <article className="task-list" key={index}>
+                                <article className={ isCompleted ? "task-list completed" : "task-list" } key={index}>
                                     <div className="wrapper-check">
                                         <input type='checkbox' defaultChecked={checked} onClick={handleCheck} style={{marginRight: '10px'}}/>
                                         <span>{title}</span>
                                     </div>
                                     <div className='wrapper-btn'>
-                                        <button className='btn btn-detail' onClick={() => handleEdit(index)}>Detail</button>
+                                        <button className='btn btn-detail' onClick={() => handleEdit(index, id)}>Detail</button>
                                         <button className='btn btn-remove' onClick={() => removeTask(id)}>Remove</button>
                                     </div>
                                 </article>
@@ -153,7 +153,7 @@ const List = ({list, setList, isEditing, removeTask, disablePastDate, alert, sho
                         )
                     })
                 ) : ( list.map((item, index) => {
-                    const {id, title, description, priority, date, isCompleted} = item
+                    const {id, title, isCompleted} = item
                     return (
                         <>
                             <article className={ isCompleted ? "task-list completed" : "task-list" } key={index}>

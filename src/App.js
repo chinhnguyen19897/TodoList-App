@@ -47,7 +47,7 @@ function App() {
         {
             const newItem = {id: new Date().getTime().toString(), ...task}
             setList([...list, newItem])
-            setTask({title: "", description: "", date: "", priority: "Normal"})
+            setTask(initialState)
             showAlert(true, "success", 'item added to the list')
         }
     }
