@@ -1,7 +1,12 @@
 ## Readme
 
-In the project directory, you can run:
 
+
+Installation
+### `yarn install`
+run this command yarn install 
+
+In the project directory, you can run:
 ### `yarn start`
 
 Runs the app in the development mode.<br />
