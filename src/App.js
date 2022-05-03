@@ -52,14 +52,7 @@ function App() {
         }
     }
 
-    //Handle form edit
-    const handleEdit = (index) => {
-        if(isEditing === index) {
-            return setIsEditing(null)
-        }
-        setIsEditing(index)
 
-    }
 
     const removeTask = (id) => {
         showAlert(true, "danger", "item removed")
@@ -100,7 +93,6 @@ function App() {
                           list={list}
                           setList={setList}
                           isEditing={isEditing}
-                          handleEdit={handleEdit}
                           removeTask={removeTask}
                           disablePastDate={disablePastDate}
                           alert={alert}

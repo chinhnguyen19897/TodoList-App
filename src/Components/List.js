@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import Alert from "./Alert";
 
 
 
 
-const List = ({list, setList, handleEdit, isEditing, removeTask, disablePastDate, alert, showAlert, setIsEditing, defaultDate}) => {
+const List = ({list, setList, isEditing, removeTask, disablePastDate, alert, showAlert, setIsEditing, defaultDate}) => {
     const initialState = {
     title: "",
     description: "",
@@ -17,7 +17,6 @@ const List = ({list, setList, handleEdit, isEditing, removeTask, disablePastDate
     const [itemFilter, setItemFilter] = useState([])
     const [newTask, setNewTask] = useState(initialState)
 
-    console.log(newTask)
     // Handle search task
     const handleSearch = (e) => {
         const value = e.target.value;
@@ -33,9 +32,26 @@ const List = ({list, setList, handleEdit, isEditing, removeTask, disablePastDate
 
     }
 
+    //Handle form edit
+    const handleEdit = (index, id) => {
+        if(isEditing === index) {
+            return setIsEditing(null)
+
+        }
+        let newItem = list.find((item) => {
+                return item.id === id
+            })
+        setNewTask(newItem)
+        setIsEditing(index)
+    }
+
+
     const handleCheck = () => {
         setChecked(!checked)
     }
+
+
+
 
     //Update task
     const changeUpdate = (e) => {
@@ -55,7 +71,7 @@ const List = ({list, setList, handleEdit, isEditing, removeTask, disablePastDate
               return item
           })
       )
-        setNewTask({title: "", description: "", date: "", priority: "Normal", isComplete: false})
+        setNewTask(initialState)
         setIsEditing(false)
 
     }
@@ -73,7 +89,6 @@ const List = ({list, setList, handleEdit, isEditing, removeTask, disablePastDate
         setList([])
         handleCheck()
     }
-
 
 
     return (
