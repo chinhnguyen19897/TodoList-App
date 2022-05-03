@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Alert from './Alert'
 import ItemTodo from './ItemTodo'
-import ItemFilterTodo from './ItemFilterTodo'
+import FilterItemTodo from './FilterItemTodo'
 // eslint-disable-next-line react/prop-types
 const TodoList = ({ list, setList, isEditing, removeTask, disablePastDate, alert, showAlert, setIsEditing, defaultDate }) => {
   const initialState = {
@@ -84,61 +84,61 @@ const TodoList = ({ list, setList, isEditing, removeTask, disablePastDate, alert
   }
 
   return (
-        <>
-            <section className="list-section">
-                {/* eslint-disable-next-line react/prop-types */}
-                {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
-                 <div className='list-container'>
-                         <h4>To Do List</h4>
-                    <div className='form-control'>
-                        <input type="search" className='search input' placeholder='Search...' onChange={handleSearch} value={search}/>
-                    </div>
+      <>
+        <section className="list-section">
+          {/* eslint-disable-next-line react/prop-types */}
+          {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
+          <div className='list-container'>
+            <h4>To Do List</h4>
+            <div className='form-control'>
+              <input type="search" className='search input' placeholder='Search...' onChange={handleSearch} value={search}/>
+            </div>
             {
-                search.length > 1
-                  ? (
-                      itemFilter.map((item, index) => (
-                        // eslint-disable-next-line react/jsx-key
-                              <ItemFilterTodo data={item} index={index}
-                                              checked={checked}
-                                              handleCheck={handleCheck}
-                                              handleEdit={handleEdit}
-                                              removeTask={removeTask}
-                                              changeUpdate={changeUpdate}
-                                              newTask={newTask}
-                                              isEditing={isEditing}
-                                              disablePastDate={disablePastDate}
-                                              updateTask={updateTask}
-                                              completeTodo={completeTodo}
-                                              handleRemove={handleRemove}
-                              />
-                      ))
-                    )
-                // eslint-disable-next-line react/prop-types
-                  : (
-                // eslint-disable-next-line react/prop-types
-                      list.map((item, index) => (
-                              // eslint-disable-next-line react/jsx-key
-                              <ItemTodo
-                                  index={index}
-                                  data={item}
-                                  checked={checked}
-                                  handleCheck={handleCheck}
-                                  handleEdit={handleEdit}
-                                  removeTask={removeTask}
-                                  changeUpdate={changeUpdate}
-                                  newTask={newTask}
-                                  isEditing={isEditing}
-                                  disablePastDate={disablePastDate}
-                                  updateTask={updateTask}
-                                  completeTodo={completeTodo}
-                                  handleRemove={handleRemove}
-                              />
-                      ))
-                    )
+              search.length > 1
+                ? (
+                    itemFilter.map((item, index) => (
+                          // eslint-disable-next-line react/jsx-key
+                          <FilterItemTodo data={item} index={index}
+                                          checked={checked}
+                                          handleCheck={handleCheck}
+                                          handleEdit={handleEdit}
+                                          removeTask={removeTask}
+                                          changeUpdate={changeUpdate}
+                                          newTask={newTask}
+                                          isEditing={isEditing}
+                                          disablePastDate={disablePastDate}
+                                          updateTask={updateTask}
+                                          completeTodo={completeTodo}
+                                          handleRemove={handleRemove}
+                          />
+                    ))
+                  )
+                  // eslint-disable-next-line react/prop-types
+                : (
+              // eslint-disable-next-line react/prop-types
+                    list.map((item, index) => (
+                          // eslint-disable-next-line react/jsx-key
+                          <ItemTodo
+                              index={index}
+                              data={item}
+                              checked={checked}
+                              handleCheck={handleCheck}
+                              handleEdit={handleEdit}
+                              removeTask={removeTask}
+                              changeUpdate={changeUpdate}
+                              newTask={newTask}
+                              isEditing={isEditing}
+                              disablePastDate={disablePastDate}
+                              updateTask={updateTask}
+                              completeTodo={completeTodo}
+                              handleRemove={handleRemove}
+                          />
+                    ))
+                  )
             }
-                 </div>
-            </section>
-        </>
+          </div>
+        </section>
+      </>
   )
 }
 

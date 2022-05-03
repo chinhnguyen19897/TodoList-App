@@ -1,7 +1,7 @@
 import React from 'react'
 
 // eslint-disable-next-line react/prop-types
-const ItemFilterTodo = ({ data, index, checked, handleCheck, handleEdit, removeTask, changeUpdate, newTask, isEditing, disablePastDate, updateTask, completeTodo, handleRemove }) => {
+const FilterItemTodo = ({ data, index, checked, handleCheck, handleEdit, removeTask, changeUpdate, newTask, isEditing, disablePastDate, updateTask, completeTodo, handleRemove }) => {
   // eslint-disable-next-line react/prop-types
   const { id, title, isCompleted } = data
   return (
@@ -54,4 +54,4 @@ const ItemFilterTodo = ({ data, index, checked, handleCheck, handleEdit, removeT
   )
 }
 
-export default ItemFilterTodo
+export default FilterItemTodo
